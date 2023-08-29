@@ -64,7 +64,7 @@ android {
     namespace = "com.arkangel.ulessonsharedlibrary"
     compileSdk = 33
     defaultConfig {
-        minSdk = 24
+        minSdk = 23
     }
 }
 
