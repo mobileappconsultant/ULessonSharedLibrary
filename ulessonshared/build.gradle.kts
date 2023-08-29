@@ -90,26 +90,26 @@ publishing {
             version = file("../VERSION").readText()
             artifact("$buildDir/outputs/aar/ulessonshared-release.aar")
 
-//            pom.withXml {
-//                // for dependencies and exclusions
-//                val dependenciesNode = asNode().appendNode("dependencies")
-//                configurations.implementation.get().allDependencies.withType(ModuleDependency::class.java) {
-//                    val dependencyNode = dependenciesNode.appendNode("dependency")
-//                    dependencyNode.appendNode("groupId", group)
-//                    dependencyNode.appendNode("artifactId", name)
-//                    dependencyNode.appendNode("version", version)
-//
-//                    // for exclusions
-//                    if (excludeRules.size > 0) {
-//                        val exclusions = dependencyNode.appendNode("exclusions")
-//                        excludeRules.forEach { ex ->
-//                            val exclusion = exclusions.appendNode("exclusion")
-//                            exclusion.appendNode("groupId", ex.group)
-//                            exclusion.appendNode("artifactId", ex.module)
-//                        }
-//                    }
-//                }
-//            }
+            pom.withXml {
+                // for dependencies and exclusions
+                val dependenciesNode = asNode().appendNode("dependencies")
+                configurations.implementation.get().allDependencies.withType(ModuleDependency::class.java) {
+                    val dependencyNode = dependenciesNode.appendNode("dependency")
+                    dependencyNode.appendNode("groupId", group)
+                    dependencyNode.appendNode("artifactId", name)
+                    dependencyNode.appendNode("version", version)
+
+                    // for exclusions
+                    if (excludeRules.size > 0) {
+                        val exclusions = dependencyNode.appendNode("exclusions")
+                        excludeRules.forEach { ex ->
+                            val exclusion = exclusions.appendNode("exclusion")
+                            exclusion.appendNode("groupId", ex.group)
+                            exclusion.appendNode("artifactId", ex.module)
+                        }
+                    }
+                }
+            }
         }
     }
 }
